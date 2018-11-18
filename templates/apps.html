@@ -1,0 +1,85 @@
+{% include 'nav.html' %}
+    <!-- Begin page content -->
+    <main role="main">
+
+      <div class="container">
+	  <br/>
+	  <br/><br/>
+		
+	  <div class="jumbotron">
+	        <div class="container">
+			<h3>Current Apps</h3>
+    <table id="apps_table" class="table table-hover">
+        <thead>
+            <tr>
+                <th data-field="client_name">Client Name</th>
+                <th data-field="clientId" data-formatter="apps_client_id_formatter" >Client Id</th>
+                <th data-field="definitionId">Definition Id</th>
+                <th data-field="definitionName">Definition Name</th>
+                <th data-field="action" data-formatter="apps_table_remove_formatter" data-events="actionEvents">Remove</th>
+            </tr>
+        </thead>
+    </table>
+
+  <button class="btn btn-warning btn-sm" onclick="javascript:init_apps_table(true);">Refresh</button>
+
+		</div>
+	  </div>
+	  
+	  <div class="jumbotron">
+        <div class="container">
+			<h3>Register New App</h3>
+
+<form id="new-app">
+  <div class="form-group">
+    <label>App Name (*)</label>
+    <input type="text" class="form-control" id="app-name" name="app-name">
+  </div>
+  <div class="form-group">
+    <label>Redirect URL (*)</label>
+    <textarea rows="4" type="text" class="form-control" id="redirect-url" name="redirect-url"></textarea>
+    <small class="form-text text-muted">Use [ENTER] for multiple URLs.</small>
+  </div>
+</form>
+  <button id="new-app-btn" class="btn btn-primary">Submit</button>
+
+
+
+
+		</div>
+	  </div>
+	  
+
+      </div> <!-- /container -->
+
+    </main>  
+
+
+<div class="modal fade" id="modal-apps" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">App Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-body-scroll">
+	<div id="detail-app"></div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+
+    <script src="static/js/index.js"></script>
+
+</body>
+</html>
+

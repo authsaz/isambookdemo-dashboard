@@ -1,0 +1,165 @@
+{% include 'nav.html' %}
+
+    <!-- Begin page content -->
+    <main role="main">
+
+      <div class="container">
+          <br/>
+          <br/><br/>
+
+          <div class="jumbotron">
+                <div class="container">
+                        <h3>Authorization Grant</h3>
+    <table id="grants_table" class="table table-hover">
+        <thead>
+            <tr>
+                <th data-field="id" data-formatter="grants_table_id_formatter">Id</th>
+                <th data-field="isEnabled" data-formatter="grants_table_isenable_formatter" data-events="actionEvents">IsEnabled</th>
+                <th data-field="clientId">ClientId</th>
+                <th data-field="action" data-formatter="grants_table_remove_formatter" data-events="actionEvents">Remove</th>
+            </tr>
+        </thead>
+    </table>
+  <button class="btn btn-warning btn-sm" onclick="javascript:init_grant_table(true);">Refresh</button>
+                </div>
+          </div>
+
+          <div class="jumbotron">
+                <div class="container">
+                        <h3>Authenticators</h3>
+    <table id="authenticators-table" class="table table-hover">
+        <thead>
+            <tr>
+                <th data-field="id" data-formatter="authenticator_id_formatter">Id</th>
+                <th data-field="device_name">Device Name</th>
+                <th data-field="device_type">Device Type</th>
+                <th data-field="os_version">OS Version</th>
+                <th data-field="oauth_grant" data-formatter="grants_table_id_formatter">oAuth Grant</th>
+                <th data-field="enabled">Enabled</th>
+                <th data-field="action" data-formatter="authenticator_table_remove_formatter" data-events="actionEvents">Remove</th>
+            </tr>
+        </thead>
+    </table>
+  <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-new-auth" >New</button> 
+  <button class="btn btn-warning btn-sm" onclick="javascript:init_authenticators_table(true);">Refresh</button>
+                </div>
+          </div>
+
+
+                </div>
+          </div>
+
+
+
+
+      </div> <!-- /container -->
+
+    </main>  
+ 
+
+<div class="modal fade" id="modal-grant" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Grant Detail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-body-scroll">
+
+    <table id="grant_detail_table" class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th data-field="type">Type</th>
+                <th data-field="subType">SubType</th>
+                <th data-field="dateCreated">Date Created</th>
+                <th data-field="lifetime">Lifetime (Seconds)</th>
+                <th data-field="lastUsed">Last Activity</th>
+                <th data-field="scope">Scope</th>
+            </tr>
+        </thead>
+    </table>
+
+<hr/>
+    <table id="grant_attribute_detail_table" class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th data-field="name">Name</th>
+                <th data-field="value">Value</th>
+                <th data-field="readonly">Read Only</th>
+                <th data-field="sensitive">Sensitive</th>
+            </tr>
+        </thead>
+    </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-new-auth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Authenticator</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-body-scroll">
+
+	<div class="" id="img-qr"></div>	
+	<div class="" id="detail-qr"></div>	
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-authenticator" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enrolled Authentication Methods</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-body-scroll">
+    <input type="hidden" id="enrolled_row_id" />
+    <table id="auth_enrolled_detail_table" class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th data-field="id">Id</th>
+                <th data-field="type">Type</th>
+                <th data-field="key_handle">Key Handle</th>
+                <th data-field="algorithm">Algorithm</th>
+                <th data-field="enabled">Enabled</th>
+                <th data-field="action" data-formatter="authenticator_enrolled_remove_formatter" data-events="actionEvents">Remove</th>
+            </tr>
+        </thead>
+    </table>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <script src="static/js/index.js"></script>
+
+</body>
+</html>
+
