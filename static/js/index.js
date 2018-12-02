@@ -62,7 +62,7 @@ window.actionEvents = {
 			function(){ reload_auth_methods($("#enrolled_row_id").val()); });
     },
     'click .table-apps-remove': function (e, value, row, index) {
-        var url = urls["API_CLIENTS_DELETE"]["url"].format({"id": row["clientId"],"definition":"AppsDefinition"})
+        var url = urls["API_CLIENTS_DELETE"]["url"].format({"id": row["clientId"],"definition":"AppsRegister"})
         api_call(urls["API_CLIENTS_DELETE"]["method"], url,
                         function(){ init_apps_table(true); },null,{"Accept": "application/json"});
     },
@@ -163,7 +163,7 @@ window.actionEvents = {
         var button = $(e.relatedTarget);
         var rowid = button.data('row');
         var headers = {"Accept": "application/json","Content-type": "application/json"};
-        var url = urls["API_CLIENTS_DETAIL"]["url"].format({"id":rowid, "definition":"AppsDefinition"});
+        var url = urls["API_CLIENTS_DETAIL"]["url"].format({"id":rowid, "definition":"AppsRegister"});
 	
         api_call(urls["API_CLIENTS_DETAIL"]["method"], url, function(msg){
 		var list = [];
@@ -218,7 +218,7 @@ window.actionEvents = {
 	var appname = $("#app-name").val();
 	var redirecturl = $("#redirect-url").val();
 	var data = {client_name: appname, redirect_uris: redirecturl.split('\n')}
-	var url = urls["API_CLIENTS_REGISTER"]["url"].format({"definition": "AppsDefinition"});
+	var url = urls["API_CLIENTS_REGISTER"]["url"].format({"definition": "AppsRegister"});
 	var headers = {"Accept": "application/json","Content-type": "application/json"};
 	api_call(urls["API_CLIENTS_REGISTER"]["method"], url, function(msg){
 		console.log(msg);
